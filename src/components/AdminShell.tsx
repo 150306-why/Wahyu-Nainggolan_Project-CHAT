@@ -14,9 +14,9 @@ import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 const COLLAPSED_KEY = "admin-sidebar-collapsed";
 
 const NAV_ITEMS = [
-	{ to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, adminOnly: false },
-	{ to: "/products", label: "Products", icon: Package, adminOnly: false },
-	{ to: "/users", label: "Users", icon: Users, adminOnly: true },
+	{ to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, tone: "text-emerald-600 dark:text-emerald-400", adminOnly: false },
+	{ to: "/products", label: "Products", icon: Package, tone: "text-sky-600 dark:text-sky-400", adminOnly: false },
+	{ to: "/users", label: "Users", icon: Users, tone: "text-violet-600 dark:text-violet-400", adminOnly: true },
 ] as const;
 
 function readCollapsed(): boolean {
@@ -40,7 +40,7 @@ function Brand() {
 	return (
 		<Link to="/dashboard" className="flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
 			<span
-				className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground"
+				className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand text-sm font-bold shadow-sm"
 				aria-hidden="true"
 			>
 				E
@@ -75,9 +75,9 @@ function NavList({
 							"flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-sidebar-foreground/70 transition-colors outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-[3px] focus-visible:ring-sidebar-ring/50",
 							compact && "justify-center px-0",
 						)}
-						activeProps={{ className: "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary" }}
+						activeProps={{ className: "bg-primary/15 text-primary font-semibold hover:bg-primary/15 hover:text-primary" }}
 					>
-						<Icon className="size-4 shrink-0" aria-hidden="true" />
+						<Icon className={cn("size-4 shrink-0", item.tone)} aria-hidden="true" />
 						{!compact && <span className="truncate">{item.label}</span>}
 					</Link>
 				);
@@ -108,7 +108,7 @@ export function AdminShell({
 	return (
 		<div className="flex min-h-dvh flex-col bg-background">
 			{/* Top navbar */}
-			<header className="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-border bg-background px-4 md:px-6">
+			<header className="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-border bg-card/90 px-4 backdrop-blur md:px-6">
 				<button
 					type="button"
 					onClick={() => setDrawerOpen(true)}

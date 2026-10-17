@@ -99,7 +99,7 @@ function LoginPage() {
 		<main className="flex min-h-[calc(100dvh-9rem)] items-center justify-center px-4 py-12">
 			<div className="w-full max-w-md">
 				<div className="mb-6 text-center">
-					<span className="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+					<span className="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-brand shadow-md">
 						<ShieldCheck className="size-6" aria-hidden="true" />
 					</span>
 					<h1 className="text-2xl font-semibold tracking-tight text-foreground">

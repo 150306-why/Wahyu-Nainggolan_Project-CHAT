@@ -11,16 +11,19 @@ export const Route = createFileRoute("/_public/")({
 const FEATURES = [
 	{
 		icon: Package,
+		tile: "bg-sky-500/15 text-sky-700 dark:text-sky-400",
 		title: "Product catalogue",
 		body: "Price, stock and product images. Images are resized to fit 512×512px before they are saved.",
 	},
 	{
 		icon: Users,
+		tile: "bg-violet-500/15 text-violet-700 dark:text-violet-400",
 		title: "Team access",
 		body: "Promote or remove administrators. The app blocks changes that would lock everyone out.",
 	},
 	{
 		icon: ShieldCheck,
+		tile: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
 		title: "Checked on the server",
 		body: "Every change is validated and authorized on the server. Client-side checks are only for convenience.",
 	},
@@ -67,7 +70,7 @@ function Home() {
 						const Icon = feature.icon;
 						return (
 							<li key={feature.title} className="card flex gap-4 p-5">
-								<span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+								<span className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${feature.tile}`}>
 									<Icon className="size-5" aria-hidden="true" />
 								</span>
 								<div className="min-w-0">

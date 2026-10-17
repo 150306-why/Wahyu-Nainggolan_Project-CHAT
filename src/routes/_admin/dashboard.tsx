@@ -58,12 +58,15 @@ function Dashboard() {
 			/>
 
 			<div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-				<Stat icon={Package} label="Products" value={productsQuery.data ? products.length : null} />
-				<Stat icon={Boxes} label="Units in stock" value={productsQuery.data ? totalStock : null} />
+				<Stat icon={Package} tone="emerald"
+					label="Products" value={productsQuery.data ? products.length : null} />
+				<Stat icon={Boxes} tone="sky"
+					label="Units in stock" value={productsQuery.data ? totalStock : null} />
 				{isAdmin ? (
 					<Stat
 						icon={ShieldCheck}
-						label="Administrators"
+						tone="violet"
+					label="Administrators"
 						value={usersQuery.data ? adminCount : null}
 						hint={
 							usersQuery.data
@@ -73,7 +76,8 @@ function Dashboard() {
 						error={usersQuery.isError}
 					/>
 				) : (
-					<Stat icon={UserRound} label="Your role" valueText="User" hint="Read-only access" />
+					<Stat icon={UserRound} tone="amber"
+					label="Your role" valueText="User" hint="Read-only access" />
 				)}
 			</div>
 
@@ -128,6 +132,7 @@ function Dashboard() {
 						<ShortcutLink
 							to="/products"
 							icon={Package}
+							tone="sky"
 							title="Products"
 							body="Browse, sort and manage the catalogue."
 						/>
@@ -135,6 +140,7 @@ function Dashboard() {
 							<ShortcutLink
 								to="/users"
 								icon={Users}
+								tone="violet"
 								title="Users"
 								body="Change roles and remove accounts."
 							/>
@@ -152,8 +158,28 @@ function Dashboard() {
 	);
 }
 
+const TONES = {
+	emerald: {
+		top: "bg-emerald-500",
+		tile: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
+	},
+	sky: {
+		top: "bg-sky-500",
+		tile: "bg-sky-500/15 text-sky-700 dark:text-sky-400",
+	},
+	violet: {
+		top: "bg-violet-500",
+		tile: "bg-violet-500/15 text-violet-700 dark:text-violet-400",
+	},
+	amber: {
+		top: "bg-amber-500",
+		tile: "bg-amber-500/20 text-amber-700 dark:text-amber-400",
+	},
+} as const;
+
 function Stat({
 	icon: Icon,
+	tone,
 	label,
 	value,
 	valueText,
@@ -161,6 +187,7 @@ function Stat({
 	error,
 }: {
 	icon: typeof Package;
+	tone: keyof typeof TONES;
 	label: string;
 	value?: number | null;
 	valueText?: string;
@@ -169,9 +196,10 @@ function Stat({
 }) {
 	const loading = valueText === undefined && (value === null || value === undefined) && !error;
 	return (
-		<div className="card p-5">
+		<div className="card relative overflow-hidden p-5">
+			<span className={`absolute inset-x-0 top-0 h-1 ${TONES[tone].top}`} aria-hidden="true" />
 			<div className="mb-3 flex items-center gap-3">
-				<span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+				<span className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${TONES[tone].tile}`}>
 					<Icon className="size-5" aria-hidden="true" />
 				</span>
 				<p className="m-0 text-xs font-medium tracking-wide text-muted-foreground uppercase">
@@ -197,11 +225,13 @@ function Stat({
 function ShortcutLink({
 	to,
 	icon: Icon,
+	tone,
 	title,
 	body,
 }: {
 	to: "/products" | "/users";
 	icon: typeof Package;
+	tone: keyof typeof TONES;
 	title: string;
 	body: string;
 }) {
@@ -210,7 +240,7 @@ function ShortcutLink({
 			to={to}
 			className="group flex items-center gap-4 rounded-lg border border-border bg-background p-4 transition-colors outline-none hover:bg-muted/50 focus-visible:ring-[3px] focus-visible:ring-ring/50"
 		>
-			<span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+			<span className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${TONES[tone].tile}`}>
 				<Icon className="size-5" aria-hidden="true" />
 			</span>
 			<span className="min-w-0 flex-1">

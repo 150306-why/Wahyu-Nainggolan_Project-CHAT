@@ -60,7 +60,7 @@ Layouts: `_public.tsx` (public header/footer) and `_admin.tsx` (auth guard plus 
 - **Tables**: TanStack Table v9. Sorting needs `sortedRowModel: createSortedRowModel()` in `tableFeatures(...)`.
 - **Dialogs**: `src/components/ui/dialog.tsx` (Radix Dialog). Used for modals, the mobile drawer and confirmations.
 - **Theme**: `public/theme-init.js` applies the saved theme before first paint. No inline script.
-- **Design system**: Cleopatra (neutral theme). Semantic tokens (`bg-card`, `border-border`, `text-muted-foreground`, `bg-sidebar`, `bg-primary/10`) live in `src/styles.css`, light and dark. Use them instead of hard-coded colours. `.card` is the shared surface (1px border, `rounded-xl`, soft shadow). Font is Inter. Layout is a flat top navbar plus a bordered sidebar (`AdminShell.tsx`). Status pills use `bg-<colour>-500/10` with a `-700` (light) / `-400` (dark) text.
+- **Design system**: Cleopatra (green accent, tinted neutrals). Semantic tokens (`bg-card`, `border-border`, `text-muted-foreground`, `bg-sidebar`, `bg-primary/10`) live in `src/styles.css`, light and dark. Use them instead of hard-coded colours. `.card` is the shared surface (1px border, `rounded-xl`, soft shadow). Font is Inter. Layout is a flat top navbar plus a bordered sidebar (`AdminShell.tsx`). Status pills use `bg-<colour>-500/10` with a `-700` (light) / `-400` (dark) text.
 
 ## Known gotchas
 

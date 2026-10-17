@@ -170,7 +170,7 @@ function UsersPage() {
 				<>
 					<div className="card hidden overflow-x-auto md:block">
 						<table className="w-full border-collapse text-sm">
-							<thead className="bg-muted/50">
+							<thead className="bg-primary/10">
 								{table.getHeaderGroups().map((headerGroup) => (
 									<tr key={headerGroup.id}>
 										{headerGroup.headers.map((header) => (
@@ -191,7 +191,7 @@ function UsersPage() {
 								{table.getRowModel().rows.map((row) => (
 									<tr
 										key={row.id}
-										className="transition-colors hover:bg-muted/30"
+										className="transition-colors hover:bg-primary/5"
 									>
 										{row.getAllCells().map((cell) => (
 											<td key={cell.id} className="px-5 py-3.5 align-middle">

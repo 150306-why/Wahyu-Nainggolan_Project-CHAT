@@ -18,7 +18,7 @@ export default function Header() {
 					className="flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
 				>
 					<span
-						className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground"
+						className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand text-sm font-bold shadow-sm"
 						aria-hidden="true"
 					>
 						E
